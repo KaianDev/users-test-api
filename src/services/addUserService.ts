@@ -13,6 +13,16 @@ export class AddUserService {
             throw new Error("Algum dado está faltando!");
         }
 
+        const userAlreadyExists = await prisma.user.findFirst({
+            where: {
+                email,
+            },
+        });
+
+        if (userAlreadyExists) {
+            throw new Error("Usuário já existe!");
+        }
+
         const newUser = await prisma.user.create({
             data: {
                 firstName,

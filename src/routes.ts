@@ -11,7 +11,7 @@ const listUsers = new ListUserController();
 const deleteUser = new DeleteUserController();
 const editUser = new EditUserController();
 
-router.get("/", (req, res) => res.json("Welcome to the API!"));
+router.get("/", (req, res) => res.json("Bem vindo a API!"));
 router.post("/user", createUser.handle);
 router.get("/users", listUsers.handle);
 router.delete("/user/:id", deleteUser.handle);

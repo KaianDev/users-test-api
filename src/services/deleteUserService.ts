@@ -7,13 +7,13 @@ export class DeleteUserService {
         });
 
         if (!user) {
-            throw new Error("User not found");
+            throw new Error("Usuário não encontrado!");
         }
 
         await prisma.user.delete({
             where: { id: user.id },
         });
 
-        return { message: "User deleted successfully" };
+        return { message: "Usuário deletado com sucesso!" };
     }
 }
