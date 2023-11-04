@@ -23,13 +23,12 @@ export class EditUserService {
         if (!user) {
             throw new Error("Usuário não encontrado!");
         }
-
-        const userAlreadyExists = await prisma.user.findFirst({
-            where: { email },
+        const emailAlreadyExists = await prisma.user.findFirst({
+            where: { email, id: { not: id } },
         });
 
-        if (userAlreadyExists) {
-            throw new Error("Esse e-mail já está sendo utilizado!");
+        if (emailAlreadyExists) {
+            throw new Error("Email já cadastrado!");
         }
 
         const updated = await prisma.user.update({
