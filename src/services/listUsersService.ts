@@ -1,4 +1,4 @@
-import { prisma } from "../prisma";
+import { prisma } from "../database";
 
 export class ListUsersServices {
     async execute() {

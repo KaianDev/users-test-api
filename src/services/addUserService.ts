@@ -1,4 +1,4 @@
-import { prisma } from "../prisma";
+import { prisma } from "../database";
 
 interface AddUserServiceProps {
     firstName: string;
@@ -12,7 +12,7 @@ export class AddUserService {
         if (!firstName || !lastName || !age || !email) {
             throw new Error("Algum dado está faltando!");
         }
-        
+
         const newUser = await prisma.user.create({
             data: {
                 firstName,
